@@ -1,0 +1,56 @@
+{
+  "name": "Jordan Lee",
+  "contact": [
+    {"label": "Example City"},
+    {"label": "jordan.lee@example.com", "url": "mailto:jordan.lee@example.com"},
+    {"label": "example.com/jordan", "url": "https://example.com/jordan"}
+  ],
+  "experience": [
+    {
+      "company": "Northstar Analytics",
+      "location": "Example City",
+      "role": "Junior Data Analyst",
+      "dates": "January 2025 - Present",
+      "bullets": [
+        "Built repeatable Python and SQL workflows that reduced weekly reporting time by 30 percent.",
+        "Investigated data-quality issues and documented fixes for technical and customer-facing teams.",
+        "Presented concise findings and recommendations to product and operations stakeholders."
+      ]
+    },
+    {
+      "company": "Example University",
+      "location": "Example City",
+      "role": "Research Assistant",
+      "dates": "September 2023 - December 2024",
+      "bullets": [
+        "Prepared and analysed 10,000 anonymised records using Python, statistical testing and clustering.",
+        "Maintained reproducible notebooks, validation checks and clear model documentation."
+      ]
+    }
+  ],
+  "skills": [
+    {"category": "Programming and Data", "items": "Python, SQL, PostgreSQL, pandas, Git, Excel"},
+    {"category": "Machine Learning", "items": "scikit-learn, classification, clustering, cross-validation"},
+    {"category": "Communication", "items": "Technical documentation, stakeholder reporting, presentations"}
+  ],
+  "projects": [
+    {
+      "name": "Customer Response Modelling",
+      "tech": "Python, scikit-learn",
+      "description": "Compared several classification models with held-out validation and translated the results into customer-level recommendations."
+    },
+    {
+      "name": "Support Data Explorer",
+      "tech": "SQL, Power BI",
+      "description": "Analysed customer and support records to identify recurring issues and communicate operational trends."
+    }
+  ],
+  "education": [
+    {
+      "institution": "Example University",
+      "location": "Example City",
+      "degree": "M.Sc. Data Science",
+      "dates": "2023 - 2025"
+    }
+  ]
+}

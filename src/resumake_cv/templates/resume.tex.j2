@@ -1,0 +1,72 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath,amssymb,textcomp}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\input{glyphtounicode}
+\pdfgentounicode=1
+\textheight=10in
+\pagestyle{empty}
+\raggedright
+\usepackage[left=0.8in,right=0.8in,bottom=0.8in,top=0.8in]{geometry}
+\usepackage[hidelinks]{hyperref}
+
+\newcommand{\lineunder}{\vspace*{-8pt}\\\hspace*{-18pt}\hrulefill\\}
+\newcommand{\resumeheader}[1]{\hspace*{-18pt}\vspace*{6pt}\textsc{#1}\vspace*{-6pt}\lineunder}
+
+\begin{document}
+\vspace*{-40pt}
+\vspace*{-10pt}
+\begin{center}
+  {\Huge\scshape{ {{ cv.name|latex }} }}\\
+  {\scriptsize{}
+  {%- for item in cv.get('contact', []) %}
+    {%- if item.get('url') %}\href{ {{- item.url|latex -}} }{ {{- item.get('label', item.get('value', ''))|latex -}} }
+    {%- else %}{{ item.get('label', item.get('value', ''))|latex }}{% endif -%}
+    {%- if not loop.last %} $\cdot$ {% endif -%}
+  {%- endfor %}\\}
+\end{center}
+
+{% if cv.get('experience') %}
+\resumeheader{Work Experience}
+\vspace{1mm}
+{% for job in cv.experience %}
+\textbf{ {{- job.company|latex -}} }\hfill {{ job.get('location', '')|latex }}\\
+\textit{ {{- job.role|latex -}} }\hfill {{ job.dates|latex }}\\
+\vspace{-1mm}
+\begin{itemize}\itemsep 1pt
+{% for bullet in job.get('bullets', []) %}
+  \item {{ bullet|latex }}
+{% endfor %}
+\end{itemize}
+{% endfor %}
+{% endif %}
+
+{% if cv.get('skills') %}
+\resumeheader{Skills}
+{% for skill in cv.skills %}
+\textbf{ {{- skill.category|latex -}} :} {{ skill['items']|latex }}\\
+{% endfor %}
+\vspace{2mm}
+{% endif %}
+
+{% if cv.get('projects') %}
+\resumeheader{Selected Projects}
+{% for project in cv.projects %}
+{\textbf{ {{- project.name|latex -}} }}{% if project.get('tech') %} {\sl {{ project.tech|latex }}}{% endif %}\\
+{% if project.get('url') %}\href{ {{- project.url|latex -}} }{ {{- project.get('url_label', project.url)|latex -}} }\\{% endif %}
+{{ project.description|latex }}\\
+{% if not loop.last %}\vspace*{2mm}{% endif %}
+{% endfor %}
+\vspace*{2mm}
+{% endif %}
+
+{% if cv.get('education') %}
+\resumeheader{Education}
+{% for education in cv.education %}
+\textbf{ {{- education.institution|latex -}} }\hfill {{ education.get('location', '')|latex }}\\
+{{ education.degree|latex }}\hfill {{ education.dates|latex }}\\
+{% endfor %}
+{% endif %}
+
+\end{document}
